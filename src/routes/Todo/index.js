@@ -14,7 +14,6 @@ export default (store) => ({
 
             /*  Add the reducer to the store on key 'counter'  */
             //injectReducer(store, { key: 'counter', reducer })
-            console.log(cb, Todo);
 
             /*  Return getComponent   */
             cb(null, Todo)
