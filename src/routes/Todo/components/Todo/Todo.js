@@ -7,10 +7,10 @@ export default class Todo extends React.Component {
         return (
             <div>
                 <strong>Incomplete</strong>
-                <TodoList items={[{text: 'hola', id: 1},{text: 'chau', id: 2},{text: 'nada', id: 3}]} />
+                <TodoList items={this.props.todo.incomplete} />
                 <strong>Complete</strong>
-                <TodoList items={[{text: 'good', id: 4},{text: 'day', id: 5},{text: 'hard', id: 6}]} />
-                <TodoAdd />
+                <TodoList items={this.props.todo.complete} />
+                <TodoAdd submit={this.props.addTodo} />
             </div>
         );
     }

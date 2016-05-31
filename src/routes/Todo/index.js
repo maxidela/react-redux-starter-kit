@@ -1,4 +1,4 @@
-//import { injectReducer } from '../../store/reducers'
+import { injectReducer } from '../../store/reducers'
 
 export default (store) => ({
     path: 'todo',
@@ -10,10 +10,10 @@ export default (store) => ({
             /*  Webpack - use require callback to define
              dependencies for bundling   */
             const Todo = require('./containers/TodoContainer').default;
-            //const reducer = require('./modules/counter').default
+            const reducer = require('./modules/todo').default
 
             /*  Add the reducer to the store on key 'counter'  */
-            //injectReducer(store, { key: 'counter', reducer })
+            injectReducer(store, { key: 'todo', reducer })
 
             /*  Return getComponent   */
             cb(null, Todo)
