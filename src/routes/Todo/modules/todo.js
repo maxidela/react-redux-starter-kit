@@ -16,11 +16,8 @@ function guid() {
 }
 
 function addTodo(state, text){
-    let newState = Object.assign({}, state);
-    newState['incomplete'].push({
-        id: guid(),
-        text: text
-    });
+    const newState = Object.assign({}, state);
+    newState['incomplete'] = [...state.incomplete, {id: guid(), text: text}];
     return newState;
 }
 

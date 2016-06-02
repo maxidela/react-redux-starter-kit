@@ -1,9 +1,14 @@
 import React from 'react';
 
 export default class TodoAdd extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {'newtodo' : ''};
+    }
     submit(e) {
         e.preventDefault();
         this.props.submit(this.state.newtodo);
+        this.setState({'newtodo': ''});
     }
     render() {
         return (
@@ -15,6 +20,7 @@ export default class TodoAdd extends React.Component {
                         name="todo-input"
                         id="todo-input"
                         className="form-control"
+                        value={this.state.newtodo}
                         onChange={(e) => {this.setState({'newtodo': e.target.value})}}
                     />
                 </div>
