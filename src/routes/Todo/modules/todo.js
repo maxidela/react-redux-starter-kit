@@ -16,7 +16,7 @@ function guid() {
 }
 
 function addTodo(state, text){
-    let newState = state;
+    let newState = Object.assign({}, state);
     newState['incomplete'].push({
         id: guid(),
         text: text
@@ -33,9 +33,10 @@ export default function todoReducer(state = initialState, action) {
     switch (action.type) {
         case 'ADD_TODO':
             return addTodo(state, action.text);
-        break;
         case 'TOGGLE_TODO':
-            break;
+            return state
+        default:
+            return state
     }
     return state;
 }

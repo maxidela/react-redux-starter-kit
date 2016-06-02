@@ -1,9 +1,10 @@
 import { connect } from 'react-redux';
 import Todo from '../components/Todo/Todo';
 import {Add} from '../modules/todo';
+import {createSelector} from 'reselect';
 
 const mapStateToProps = (state) => ({
-    todo: state.todo
+    todos : state.todos
 });
 
 const mapActionCreators = {

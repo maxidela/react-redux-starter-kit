@@ -1,16 +1,13 @@
 import React from 'react';
 
 export default class TodoAdd extends React.Component {
-    constructor (props) {
-        super(props);
-    }
-    submit (e) {
+    submit(e) {
         e.preventDefault();
         this.props.submit(this.state.newtodo);
     }
     render() {
         return (
-            <form onSubmit={(e) => {this.submit(e)}}>
+            <form onSubmit={this.submit.bind(this)}>
                 <div className="form-group">
                     <label>New Todo: </label>
                     <input
