@@ -6,7 +6,7 @@ export default class TodoList extends React.Component {
         return (
             <ul className="list-group">
                 {this.props.items.map((item) =>
-                    <TodoListItem key={item.id} item={item.text} click={() => {console.log('hola')}}/>
+                    <TodoListItem key={item.id} item={item} click={() => this.props.ontodoclick(item.id)}/>
                 )}
             </ul>
         );

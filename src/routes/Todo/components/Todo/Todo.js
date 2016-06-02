@@ -7,9 +7,9 @@ export default class Todo extends React.Component {
         return (
             <div>
                 <strong>Incomplete</strong>
-                <TodoList items={this.props.todos.incomplete} />
+                <TodoList items={this.props.todos.filter(x => !x.complete)} ontodoclick={this.props.toggle} />
                 <strong>Complete</strong>
-                <TodoList items={this.props.todos.complete} />
+                <TodoList items={this.props.todos.filter(x => x.complete)} ontodoclick={this.props.toggle} />
                 <TodoAdd submit={this.props.addTodo} />
             </div>
         );
