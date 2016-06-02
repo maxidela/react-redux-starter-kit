@@ -1,3 +1,5 @@
+import {List} from 'immutable';
+
 export function Add(text) {
     return {
         type: 'ADD_TODO',
@@ -22,22 +24,18 @@ function guid() {
         s4() + '-' + s4() + s4() + s4();
 }
 
-function addTodo(state, text){
-    return [...state, {id: guid(), text: text, complete: false}]
+function addTodo(state, text) {
+    let newId = guid();
+    return state.push({id: newId, text: text, complete: false});
 }
 
 function toggleTodo(state, id) {
-    return state.map(x => {
-        if (x.id === id) {
-           x.complete = !x.complete;
-        }
-        return x;
+    return state.update(state.findIndex(x => x.id === id), v => {
+        return {id: v.id, text: v.text, complete: !v.complete}
     });
 }
 
-const initialState = [];
-
-export default function todoReducer(state = initialState, action) {
+export default function todoReducer(state = List(), action) {
     switch (action.type) {
         case 'ADD_TODO':
             return addTodo(state, action.text);
