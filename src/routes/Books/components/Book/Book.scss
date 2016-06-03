@@ -1,0 +1,16 @@
+.book {
+  display: inline-block;
+  background-color: white;
+  margin: 10px;
+  padding: 10px;
+  border: solid 1px #ccc;
+  border-radius: 10px;
+  width: 290px;
+  height: 376px;
+  overflow-y: scroll;
+  font-size: 12px;
+}
+
+.bookImage {
+  max-height: 200px;
+}
