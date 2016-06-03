@@ -1,12 +1,5 @@
 import {List, Map} from 'immutable';
 
-export function Search(text) {
-    return {
-        type: 'SEARCH',
-        text: text
-    };
-}
-
 export function ShowBooks(books) {
     return {
         type: 'SHOW_BOOKS',
@@ -22,7 +15,7 @@ export function ShowError(error) {
 }
 
 const fetchBooks = title => {
-    return fetch('https://www.googleapis.com/books/v1/volumes?q=' + title);
+    return fetch('https://www.googleapis.com/books/v1/volumes?q=' + title + '&maxResults=12');
 };
 
 export const searchBook = (text) => {
@@ -43,7 +36,7 @@ const addBooks = (state, books) => {
             authors: book.volumeInfo.authors || [],
             imageLinks: book.volumeInfo.imageLinks || {},
             publishedDate: book.volumeInfo.publishedDate || 'N/A',
-            description: book.volumeInfo.description || 'N/A',
+            description: book.searchInfo ? book.searchInfo.textSnippet : 'N/A',
             categories: book.volumeInfo.categories || []
         });
     }));

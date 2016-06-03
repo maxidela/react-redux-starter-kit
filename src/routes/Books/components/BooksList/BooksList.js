@@ -4,13 +4,12 @@ import Book from '../Book/Book';
 class BooksList extends React.Component {
     render() {
         return (
-            <div className="bg-info">
+            <div className="bg-info text-left">
                 <br />
                 {this.props.books.size > 0
                 ? this.props.books.map(book => <Book key={book.get('id')} bookdata={book}></Book>)
-                : 'No Results'
+                : <div className="text-center">No Results</div>
                 }
-                <br />
                 <br />
             </div>
         );

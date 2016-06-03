@@ -5,7 +5,12 @@ class BooksSearch extends React.Component {
         super(props)
         this.state = {searchTitle : ''};
     }
-    search() {
+    search(e) {
+        /**
+         * Since I added BooksSearch.contextTypes I can now access store in here.
+         * @type {null|*}
+         */
+        e.preventDefault();
         const {store} = this.context;
         if (this.state.searchTitle.length > 0) {
             //store.dispatch();
@@ -14,7 +19,7 @@ class BooksSearch extends React.Component {
     }
     render() {
         return (
-            <div className="form-inline">
+            <form className="form-inline" onSubmit={this.search.bind(this)}>
                 <div className="form-group">
                     <input type="text"
                            placeholder="Enter book title"
@@ -22,13 +27,9 @@ class BooksSearch extends React.Component {
                            value={this.state.searchTitle}
                            onChange={(e) => {this.setState({searchTitle: e.target.value})}}
                     />
-                    <input type="submit"
-                           value="Search"
-                           className="btn btn-default"
-                           onClick={this.search.bind(this)}
-                    />
+                    <input type="submit" value="Search" className="btn btn-default" />
                 </div>
-            </div>
+            </form>
         );
     }
 }

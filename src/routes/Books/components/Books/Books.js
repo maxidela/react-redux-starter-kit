@@ -7,6 +7,7 @@ class Books extends React.Component {
         return (
             <div>
                 <BooksSearch doSearch={this.props.search}></BooksSearch>
+                <br />
                 <BooksList books={this.props.books}></BooksList>
             </div>
         );
